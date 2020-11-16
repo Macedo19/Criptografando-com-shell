@@ -1,0 +1,41 @@
+#!/bin/bash
+
+C1() {
+cripto=$"(echo $SENHA | tr "abcdefghijklmnopqrstuvwxyz"   "123456789abcdefghijklmnop")"
+}
+C2() {
+cripto2="$(echo $cripto | tr "123456789abcdefghijklmnop" "@A9B8C7D6E5F4G3H2I1JaKbLcM")"
+}
+D1 () {
+descrip="$(echo $cripto2 | tr "@A9B8C7D6E5F4G3H2I1JaKbLcM" "123456789abcdefghijklmnop")"
+}
+D2 () {
+descrip = "$(echo $descrip | tr"123456789abcdefghijklmnop" "abcdefghijklmnopqrstuvwxyz")"
+}
+
+echo "Entre com apenas letras para sua senha"
+read SENHA
+SLEEP 2
+echo "______________________________"
+echo " A senha escolhida foi:       $SENHA"
+C1 $SENHA
+C2$cripto
+SLEEP 1
+echo "----------------------------------"
+echo "CRIPTOGRAFANDO A SENHA"
+SLEEP 1
+echo "----------------------------------"
+echo "                             "
+echo " Sua nova senha é :  $cripto2"
+SLEEP 1
+echo "---------------------------------"
+echo " Descriptografando a senha :   $cripto2"
+echo "---------------------------------"
+D1 $cripto2
+D2 $descrip
+SLEEP 1
+echo "--------------------------------"
+echo "  A senha original é:  $descrip2"
+echo "-------------------------------"
+
+
